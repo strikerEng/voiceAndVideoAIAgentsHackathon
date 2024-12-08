@@ -1,43 +1,67 @@
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict
 
+class ResearchQuestions(BaseModel):
+    business_metrics_questions: List[str] = Field(
+        default_factory=list,
+        description="Questions about product releases, user metrics, and service performance"
+    )
+    market_position_questions: List[str] = Field(
+        default_factory=list,
+        description="Questions about market metrics, brand performance, and competitive analysis"
+    )
+    financial_indicators_questions: List[str] = Field(
+        default_factory=list,
+        description="Questions about growth, financial performance, and partnerships"
+    )
+    technical_infrastructure_questions: List[str] = Field(
+        default_factory=list,
+        description="Questions about system reliability and infrastructure efficiency"
+    )
+    team_dynamics_questions: List[str] = Field(
+        default_factory=list,
+        description="Questions about team metrics and growth indicators"
+    )
+    innovation_metrics_questions: List[str] = Field(
+        default_factory=list,
+        description="Questions about development velocity and innovation indicators"
+    )
+
 class BusinessMetrics(BaseModel):
-    product_releases: int = Field(..., description="Number of new products, features, or significant updates launched")
-    user_metrics: Dict[str, float] = Field(default_factory=dict, description="Key user metrics including adoption, engagement, or satisfaction scores")
-    service_metrics: Dict[str, float] = Field(default_factory=dict, description="Service usage statistics, API calls, or platform metrics")
+    product_highlights: List[str] = Field(default_factory=list, description="Key product launches and feature updates")
+    user_growth: str = Field(..., description="Description of user base growth and engagement trends")
+    service_performance: str = Field(..., description="Overview of service usage and performance metrics")
 
 class MarketPosition(BaseModel):
-    market_metrics: Dict[str, float] = Field(default_factory=dict, description="Market-related metrics including share, ranking, or category position")
-    brand_metrics: Dict[str, float] = Field(default_factory=dict, description="Brand performance indicators including sentiment and awareness")
-    competitive_metrics: Dict[str, float] = Field(default_factory=dict, description="Competitive analysis and industry benchmark comparisons")
+    market_standing: str = Field(..., description="Analysis of market position and share")
+    brand_performance: str = Field(..., description="Overview of brand strength and perception")
+    competitive_analysis: str = Field(..., description="Summary of competitive positioning and benchmarks")
 
 class FinancialIndicators(BaseModel):
-    growth_metrics: Dict[str, float] = Field(default_factory=dict, description="Growth-related metrics including revenue, user base, or market expansion")
-    performance_metrics: Dict[str, float] = Field(default_factory=dict, description="Financial performance indicators and efficiency metrics")
-    partnership_metrics: Dict[str, float] = Field(default_factory=dict, description="Partnership and business development metrics")
+    growth_summary: str = Field(..., description="Overview of key growth metrics and trends")
+    performance_highlights: str = Field(..., description="Summary of financial performance and key metrics")
+    strategic_developments: str = Field(..., description="Key partnerships, investments, and strategic moves")
 
 class TechnicalInfrastructure(BaseModel):
-    reliability_metrics: Dict[str, float] = Field(default_factory=dict, description="System reliability and performance metrics")
-    efficiency_metrics: Dict[str, float] = Field(default_factory=dict, description="Infrastructure efficiency and optimization metrics")
+    platform_performance: str = Field(..., description="Analysis of technical reliability and performance")
+    infrastructure_developments: str = Field(..., description="Key technical improvements and scaling initiatives")
 
 class TeamDynamics(BaseModel):
-    team_metrics: Dict[str, float] = Field(default_factory=dict, description="Team-related metrics including headcount, retention, and distribution")
-    growth_indicators: Dict[str, float] = Field(default_factory=dict, description="Team growth and expansion metrics")
+    workforce_overview: str = Field(..., description="Summary of team growth and composition")
+    organizational_changes: str = Field(..., description="Key leadership changes and restructuring")
 
 class InnovationMetrics(BaseModel):
-    development_metrics: Dict[str, float] = Field(default_factory=dict, description="Development velocity and shipping metrics")
-    innovation_indicators: Dict[str, float] = Field(default_factory=dict, description="Innovation measurements including research, patents, and contributions")
+    development_highlights: str = Field(..., description="Key technological achievements and developments")
+    research_impact: str = Field(..., description="Summary of research contributions and patents")
 
-class MonthlyReport(BaseModel):
-    month: int = Field(..., description="Month number (1-12) of the report")
-    year: int = Field(..., description="Year of the report")
+class CompanyReport(BaseModel):
+    time_period: str = Field(..., description="Time period covered by the report")
     business_metrics: BusinessMetrics
     market_position: MarketPosition
     financial_indicators: FinancialIndicators
     technical_infrastructure: TechnicalInfrastructure
     team_dynamics: TeamDynamics
     innovation_metrics: InnovationMetrics
-    raw_sources: Dict[str, str] = Field(default_factory=dict, description="Dictionary of raw data sources and their content used for this report")
 
 ### example output
 # perplexity_q2_report = MonthlyReport(
