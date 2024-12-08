@@ -1,4 +1,6 @@
 {
+    "name" : "Anthropic",
+    "month" : 5,
     "time_period": "Last Fiscal Year",
     "business_metrics": {
         "product_highlights": [
@@ -32,5 +34,6 @@
     "innovation_metrics": {
         "development_highlights": "Anthropic has developed advanced AI models like Claude 3, with improved intelligence, responsiveness, and accuracy, outperforming other models in areas like reasoning, math, and coding",
         "research_impact": "Anthropic has published over 40 papers in areas like Interpretability, Alignment, and Societal Impacts, with a strong focus on AI safety and the development of methods to train and deploy Constitutional AI"
-    }
+    },
+    "raw_sources" : {"source":"location"}
 }
