@@ -56,15 +56,19 @@ class InnovationMetrics(BaseModel):
 
 class CompanyReport(BaseModel):
     time_period: str = Field(..., description="Time period covered by the report")
+    name: str
     business_metrics: BusinessMetrics
     market_position: MarketPosition
     financial_indicators: FinancialIndicators
     technical_infrastructure: TechnicalInfrastructure
     team_dynamics: TeamDynamics
     innovation_metrics: InnovationMetrics
+    month: int = Field(..., description="Month number (1-12) of the report")
+    year: int = Field(..., description="Year of the report")
+    raw_sources: Dict[str, str] = Field(default_factory=dict, description="Dictionary of raw data sources and their content used for this report")
 
 ### example output
-# perplexity_q2_report = MonthlyReport(
+# perplexity_q2_report = CompanyReport(
 #     month=6,
 #     year=2024,
 #     business_metrics=BusinessMetrics(

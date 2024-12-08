@@ -10,3 +10,7 @@ langchain-perplexity>=0.0.1
 
 # Async support
 aiohttp>=3.9.0
+ag2
+temporalio
+pyautogen
+pydantic
